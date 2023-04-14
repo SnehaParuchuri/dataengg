@@ -1,0 +1,26 @@
+{
+	"sql_steps": [
+        {
+			"sql_num": "1",
+			"action": "read|publish",
+			"sql": "select original_claim_num_cd, parent_claim_num_cd, child_claim_num_cd, claim_ordinal_value_num from ods_vw_service.mv_consume_claim_ln_reprocess_assn where claim_ln_reprocess_tp_cd = 'RORGCL' union select original_claim_num_cd, parent_claim_num_cd, child_claim_num_cd, claim_ordinal_value_num from ods_vw_service.mv_consume_claim_ln_reprocess_assn where claim_ln_reprocess_tp_cd != 'RORGCL' and parent_claim_num_cd != child_claim_num_cd",
+			"temp_view": "consume_claim_ln_reprocess_assn",
+			"next_sql": "2"
+		},
+		{
+			"sql_num": "2",
+			"action": "write|parquet",
+			"sql": "select * from consume_claim_ln_reprocess_assn",
+			"location": "sandbox/claims_reprocess/06-07/claim_ln_repr_ordinal_2/",
+			"mode": "overwrite",
+			"next_sql": "3"
+		},
+		{
+			"sql_num": "3",
+			"action": "read|parquet",
+			"location": "sandbox/claims_reprocess/06-07/claim_ln_repr_ordinal_2/",
+			"temp_view": "claim_ln_repr_ordinal",
+			"next_sql": "4"
+		}
+    ]
+}
