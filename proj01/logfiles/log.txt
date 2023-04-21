@@ -1,0 +1,8 @@
+2023-04-20 21:00:47,610 INFO 102 [{'sql_num': 1, 'action': 'read|csv', 'location': 'D:\\training-UI\\python\\proj01\\data\\username.csv', 'next_sql': 2}]
+2023-04-20 21:00:47,613 INFO 12 processing 1
+2023-04-20 21:00:47,613 INFO 58 D:\training-UI\python\proj01\data\username.csv
+2023-04-20 21:00:47,614 INFO 32 <_csv.reader object at 0x0000016EF5D908E0>
+2023-04-20 21:00:47,615 INFO 12 processing 2
+2023-04-20 21:00:47,616 INFO 12 processing 3
+2023-04-20 21:00:47,616 INFO 22 There's no location to read the file from
+2023-04-20 21:00:47,616 INFO 37 Encountered an exception in read function
